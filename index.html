@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sebuah pesan cinta spesial untukmu.">
+    <meta name="theme-color" content="#0a0205">
+    <title>Untuk Kesayanganku.</title>
+    
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Romantic Cinematic Background -->
+    <div class="ambient-light light-ruby"></div>
+    <div class="ambient-light light-rose-gold"></div>
+    <div class="noise-overlay"></div>
+
+    <!-- Main Content (Scrollable) -->
+    <main class="container">
+        <div class="glass-card" id="main-card">
+            
+            <!-- ====== SLIDER 3 FOTO LANDSCAPE (ATAS) ====== -->
+            <div class="slider-wrapper reveal">
+                <!-- Foto 1 (Aktif pertama) -->
+                <img src="foto/1.jpeg" alt="Kenangan 1" class="slider-img active">
+                <!-- Foto 2 -->
+                <img src="foto/2.jpeg" alt="Kenangan 2" class="slider-img">
+                <!-- Foto 3 -->
+                <img src="foto/3.jpeg" alt="Kenangan 3" class="slider-img">
+                
+                <div class="slider-glow"></div>
+            </div>
+
+            <!-- Pesan Romantis -->
+            <div class="text-content">
+                <h1 class="headline reveal delay-1">
+                    Kamu Adalah Hal Terbaik Yang Pernah Terjadi Di Hidupku.🌹
+                </h1>
+                
+                <div class="narrative-box">
+                    <p class="subheadline reveal delay-2">
+                        Di antara miliaran manusia dan luasnya semesta, aku selalu bersyukur takdir menuntun langkahku padamu. Saat harimu sedang terasa berat, ingatlah ada aku yang akan selalu siap menggenggam tanganmu. 🌌✨
+                    </p>
+                    <p class="subheadline reveal delay-3">
+                        Aku tahu kadang semuanya terasa melelahkan, tapi tolong jangan pernah menyerah ya? Kamu itu hebat, jauh lebih kuat dari yang kamu kira. Senyummu adalah sumber bahagiaku, dan aku akan selalu ada di sini buat dukung kamu. 🥺🤍
+                    </p>
+                    <p class="subheadline reveal delay-4" style="color: #fff0f5; font-weight: 400; margin-bottom: 2.5rem;">
+                        Terima kasih udah bertahan dan berjuang sampai hari ini. Apapun badai yang datang, kamu nggak akan pernah sendirian. Aku sayang banget sama kamu, hari ini, besok, dan selamanya. 🌹❤️
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tombol Play Music -->
+            <div class="action-wrapper reveal delay-5">
+                <button id="music-btn" class="music-btn" aria-label="Play Music">
+                    <svg id="icon-play" class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <svg id="icon-pause" class="btn-icon hidden" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                    </svg>
+                    <span id="btn-text" class="btn-text">Play Our Song</span>
+                </button>
+            </div>
+
+            <!-- ====== FOOTER 4 GRID FOTO & TULISAN I LOVE U ====== -->
+            <div class="footer-section reveal delay-6">
+                <!-- 4 Grid Foto -->
+                <div class="photo-grid">
+                    <div class="grid-item"><img src="foto/4.jpeg" alt="Memori 1"></div>
+                    <div class="grid-item"><img src="foto/7.jpeg" alt="Memori 2"></div>
+                    <div class="grid-item"><img src="foto/6.jpeg" alt="Memori 3"></div>
+                    <div class="grid-item"><img src="foto/5.jpeg" alt="Memori 4"></div>
+                </div>
+
+                <!-- Tulisan Bawah -->
+                <h2 class="love-text">I love u ❤️</h2>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- ====== UBAH MUSIK DI SINI ====== -->
+    <audio id="bg-music" loop>
+        <source src="w.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

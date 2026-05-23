@@ -1,0 +1,254 @@
+/* --- ROMANTIC VARIABLES & RESET --- */
+:root {
+    --bg-dark: #0a0205; 
+    --navy-dark: #14050a;
+    --neon-ruby: rgba(224, 49, 113, 0.4); 
+    --neon-rose-gold: rgba(255, 182, 193, 0.35); 
+    --text-white: #fff0f5; 
+    --text-muted: #e2c8d3; 
+    --glass-bg: rgba(255, 200, 215, 0.03); 
+    --glass-border: rgba(255, 182, 193, 0.15);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    min-height: 100vh;
+    position: relative;
+    /* Agar bisa discroll dengan cantik */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 50px 20px; 
+    overflow-x: hidden;
+}
+
+/* --- ROMANTIC AMBIENT LIGHTS --- */
+.ambient-light {
+    position: fixed; /* Fixed agar tidak ikut ter-scroll */
+    border-radius: 50%;
+    filter: blur(140px);
+    z-index: 0;
+    animation: drift 15s infinite alternate ease-in-out;
+}
+.light-ruby {
+    width: 60vw; height: 60vw;
+    background: var(--neon-ruby);
+    top: -10%; left: -10%;
+}
+.light-rose-gold {
+    width: 50vw; height: 50vw;
+    background: var(--neon-rose-gold);
+    bottom: -10%; right: -10%;
+    animation-delay: -5s;
+}
+.noise-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.05;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* --- GLASSMORPHISM CARD --- */
+.container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    padding: 3rem 2.5rem;
+    max-width: 600px; /* Sedikit diperlebar untuk mengakomodasi gambar landscape */
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 182, 193, 0.2);
+    opacity: 0; 
+}
+
+/* --- TOP SLIDER (LANDSCAPE) --- */
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Proporsi mendatar (landscape) */
+    margin: 0 auto 2.5rem auto;
+    border-radius: 20px;
+    animation: float 6s ease-in-out infinite;
+}
+.slider-img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 182, 193, 0.3);
+    opacity: 0; /* Semua gambar disembunyikan dulu */
+    transition: opacity 1.5s ease-in-out; /* Animasi fade yang sangat halus */
+    z-index: 2;
+}
+.slider-img.active {
+    opacity: 1; /* Hanya yang aktif yang muncul */
+    z-index: 3;
+}
+.slider-glow {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 110%; height: 115%;
+    background: inherit;
+    border-radius: 24px;
+    box-shadow: 0 0 50px rgba(224, 49, 113, 0.5);
+    z-index: 1;
+}
+
+/* --- TYPOGRAPHY --- */
+.headline {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+    color: var(--text-white);
+    text-shadow: 0 0 25px rgba(255, 182, 193, 0.3);
+}
+.narrative-box .subheadline {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+}
+
+/* --- ROMANTIC BUTTON --- */
+.action-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem; /* Jarak ke footer grid */
+}
+.music-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 182, 193, 0.08);
+    border: 1px solid rgba(255, 182, 193, 0.4);
+    padding: 14px 36px;
+    border-radius: 50px;
+    color: var(--text-white);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.music-btn:hover {
+    background: rgba(255, 182, 193, 0.2);
+    box-shadow: 0 0 30px rgba(224, 49, 113, 0.6);
+    transform: translateY(-3px);
+}
+.music-btn.playing {
+    border-color: rgba(224, 49, 113, 0.8);
+    box-shadow: 0 0 40px rgba(224, 49, 113, 0.6);
+    animation: pulseGlowRomantic 2s infinite;
+}
+.btn-icon { width: 18px; height: 18px; }
+.hidden { display: none !important; }
+
+/* --- FOOTER 4 GRID & LOVE TEXT --- */
+.footer-section {
+    border-top: 1px solid rgba(255, 182, 193, 0.15);
+    padding-top: 2.5rem;
+}
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 Kolom */
+    gap: 12px;
+    margin-bottom: 2rem;
+}
+.grid-item {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Kotak sempurna */
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 182, 193, 0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.grid-item:hover {
+    transform: scale(1.03);
+    border-color: rgba(255, 182, 193, 0.6);
+    box-shadow: 0 0 20px rgba(224, 49, 113, 0.4);
+}
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Agar gambar tidak gepeng */
+    transition: transform 0.5s ease;
+}
+.grid-item:hover img {
+    transform: scale(1.1); /* Efek zoom saat disentuh/di-hover */
+}
+
+/* Tulisan I Love U */
+.love-text {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--text-white);
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(224, 49, 113, 0.8), 0 0 40px rgba(255, 182, 193, 0.5);
+    animation: heartbeat 2s infinite alternate;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+@keyframes drift {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(30px, -30px) scale(1.1); }
+}
+@keyframes pulseGlowRomantic {
+    0% { box-shadow: 0 0 20px rgba(224, 49, 113, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(224, 49, 113, 0.7); }
+    100% { box-shadow: 0 0 20px rgba(224, 49, 113, 0.3); }
+}
+@keyframes fadeUpReveal {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
+
+.glass-card.loaded { animation: fadeUpReveal 1.2s ease-out forwards; }
+.glass-card.loaded .reveal { opacity: 0; animation: fadeUpReveal 1.2s ease-out forwards; }
+.glass-card.loaded .delay-1 { animation-delay: 0.4s; }
+.glass-card.loaded .delay-2 { animation-delay: 1.2s; }
+.glass-card.loaded .delay-3 { animation-delay: 2.2s; }
+.glass-card.loaded .delay-4 { animation-delay: 3.2s; }
+.glass-card.loaded .delay-5 { animation-delay: 4.0s; }
+.glass-card.loaded .delay-6 { animation-delay: 4.5s; }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    body { padding: 30px 15px; }
+    .glass-card { padding: 2.5rem 1.5rem; border-radius: 24px; }
+    .headline { font-size: 1.4rem; }
+    .love-text { font-size: 1.5rem; }
+}
+@media (max-width: 480px) {
+    .headline { font-size: 1.2rem; }
+    .narrative-box .subheadline { font-size: 0.85rem; }
+    .photo-grid { gap: 8px; }
+}
