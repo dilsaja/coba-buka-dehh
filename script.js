@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.addEventListener('touchstart', playOnInteraction, { once: true });
             });
         }
-    }, 1000); // 2000 = jeda 2 detik
+    }, 500); // 2000 = jeda 2 detik
 
     // --- LOGIKA TOMBOL PLAY/PAUSE ---
     musicBtn.addEventListener('click', (e) => {
